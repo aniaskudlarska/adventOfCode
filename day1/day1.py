@@ -45,4 +45,17 @@ def secondSolve():
             if int(item) + int(item2) == 2020:
                 return int(item) * int(item2)
 
-print(secondSolve())
+#print(secondSolve())
+
+
+#Challenge 2 asks to do the same for three numbers - i think we can do this with just three for loops?
+#Yay Python!
+
+def thirdSolve():
+    for item in listInput:
+        for item2 in listInput:
+            for item3 in listInput:
+                if int(item) + int(item2) + int(item3) == 2020:
+                    return int(item) * int(item2) * int(item3)
+
+print(thirdSolve())
