@@ -54,6 +54,7 @@ import re
 def pid_valid(teststring):
     parsed = re.search('pid:(.*) ', teststring)
     pidtest = (parsed.group(1))
+    print(pidtest)
     if len(pidtest) == 9:
         if pidtest.isnumeric():
             return True
@@ -94,13 +95,31 @@ def ecl_valid(teststring):
     return False
 
 def hgt_valid(teststring):
-    parsed = re.search('hgt:(.*)', teststring)
+    parsed = re.search('hgt:(.*) ', teststring)
     hgttest = parsed.group(1)
-    if hgttest[-2:] == 'in':
-        #TODO
-        pass
+    numbers = re.findall(r'\d+', hgttest)
+    if hgttest[-3:] == 'in ': #Replace this line with regex
+        print("hit")
+        if 59 <= int(numbers[0]) <= 76:
+            return True
+    return False
 
+print(hgt_valid('hgt:60in hgthg;ldfbk'))
 
 #TODO: Finish valid checkers and function
+
+def hcl_valid(teststring):
+    parsed = re.search('hcl:(.*) ', teststring)
+    hcltest = parsed.group(1)
+    numbers = re.findall(r'\d+', hcltest)
+    if hcltest[0] == '#':
+        if len(numbers[0]) == 6:
+            if numbers[0].isnumeric:
+                return True
+
+    return False
+
+print(hcl_valid("hcl:#111111 "))
+
 
 
